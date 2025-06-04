@@ -56,7 +56,15 @@ struct HomeScreenView: View {
             
           goToQuestionaire = true
         }, label: {
-            Image("nextButton")
+            Text("Next")
+                .font(.title)
+                .bold()
+                .foregroundColor(.beige)
+                .frame(width: 163, height: 66)
+                .background(Color.hunterGreen)
+                .cornerRadius(20)
+                .padding()
+            //Image("nextButton")
 //            ZStack {
 //                RoundedRectangle(cornerRadius: 25)
 //                    .fill(Color.blue)

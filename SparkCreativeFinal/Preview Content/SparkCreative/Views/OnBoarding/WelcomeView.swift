@@ -64,7 +64,13 @@ struct WelcomeView: View {
         Button(action: {
             goToWelcomeScreen = true
         }, label: {
-            Image("letsGo")
+            Text("Let's Go")
+                .font(.title)
+                .bold()
+                .foregroundColor(.beige)
+                .frame(width: 163, height: 66)
+                .background(Color.hunterGreen)
+                .cornerRadius(20)
                 //.font(.headline)
                // .foregroundColor(.white)
                 //.padding()

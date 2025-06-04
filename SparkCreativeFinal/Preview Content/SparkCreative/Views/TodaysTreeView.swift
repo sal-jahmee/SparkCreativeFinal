@@ -21,21 +21,17 @@ struct TodaysTreeView: View {
     
     //shakira - added show button flag
     @State var showButtons = false
-    
-    
 //    var mood: String
 //    var emotions: [String]
 //    var circumstances: [String]
     
-    
     var body: some View {
-        
-        
         NavigationStack {
-            ZStack{
+            ZStack {
                 Color.beige
                     .ignoresSafeArea()
-                VStack{
+                
+                VStack {
                     Text("Todays Tree")
                         .font(.custom("Sinhala MN", size: 30))
                         .foregroundStyle(Color.hunterGreen)
@@ -115,6 +111,7 @@ struct TodaysTreeView: View {
                 .frame(width: 163, height: 66)
                 .background(Color.hunterGreen)
                 .cornerRadius(20)
+        
         })
        
         
@@ -132,7 +129,9 @@ struct TodaysTreeView: View {
                 .frame(width: 163, height: 66)
                 .background(Color.hunterGreen)
                 .cornerRadius(20)
+                .padding()
         })
+        
     }
     
 }
