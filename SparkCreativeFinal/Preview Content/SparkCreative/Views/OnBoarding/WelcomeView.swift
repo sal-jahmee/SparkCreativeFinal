@@ -50,6 +50,7 @@ struct WelcomeView: View {
                     
                     LetsGoButton()
                     .fullScreenCover(isPresented: $goToWelcomeScreen) {
+                        
                         EnterNameView()
                     }
                     .padding()

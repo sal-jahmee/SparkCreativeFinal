@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TodaysTreeView: View {
-    //shakira
+    //shakira 6/3- accepts date
+  // var selectedDate: Date
     @StateObject var moodViewModel = MoodViewModel()
 
     @EnvironmentObject var appData: AppDataModel
@@ -20,7 +21,7 @@ struct TodaysTreeView: View {
     @State var goToExercise = false
     
     //shakira - added show button flag
-    @State var showButtons = false
+    //@State var showButtons = false
     
     
 //    var mood: String
@@ -36,6 +37,28 @@ struct TodaysTreeView: View {
                 Color.beige
                     .ignoresSafeArea()
                 VStack{
+                    //shakira - 6/3
+//                    let calendar = Calendar.current
+//                    Text("Viewing Entry for \(selectedDate.formatted(date: .abbreviated, time: .omitted))")
+//                                   .onAppear {
+//                                       // Only load from saved entries if currentCalendarEntry.mood is nil (empty)
+//                                       if appData.currentCalendarEntry.mood == nil {
+//                                           if let existingEntry = appData.entries.first(where: {
+//                                               calendar.isDate($0.date, inSameDayAs: selectedDate)
+//                                           }) {
+//                                               appData.currentCalendarEntry = existingEntry
+//                                           } else {
+//                                               appData.currentCalendarEntry = CalendarEntry(
+//                                                   date: selectedDate,
+//                                                   mood: nil,
+//                                                   selectedEmotions: [""],
+//                                                   selectedCircumstances: [""],
+//                                                   exercises: [""]
+//                                               )
+//                                           }
+//                                       }
+//                                   }
+                    
                     Text("Todays Tree")
                         .font(.custom("Sinhala MN", size: 30))
                         .foregroundStyle(Color.hunterGreen)
@@ -104,8 +127,11 @@ struct TodaysTreeView: View {
     func plantTreeButton(appData: AppDataModel) -> some View{
         
         Button(action: {
-            //selectedTab = 1
+
             appData.addEntries(CalendarEntry: appData.currentCalendarEntry)
+            //Shakira 6/3 - // Save current date
+           // appData.currentCalendarEntry.date = Date()
+ 
           
             goToCalendar = true
         }, label: {
@@ -157,6 +183,7 @@ extension MoodSlider {
 }
 
 #Preview {
+//    TodaysTreeView(selectedDate: Date())
     TodaysTreeView()
         .environmentObject(AppDataModel())
 }

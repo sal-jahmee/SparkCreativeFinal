@@ -90,7 +90,7 @@ struct HomeScreenView: View {
 
                     
                 
-                Text("What is your stress level today?")
+                Text("How are you feeling today?")
                     .font(.custom("SinhalaMN", size:20))
                     .fontWeight(.bold)
                     .foregroundColor(.hunterGreen)

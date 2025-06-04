@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CustomCalendarView2: View {
     @EnvironmentObject var appData: AppDataModel
-
+    @State var hasEntry: Bool = false
+    
     @State private var displayedDate = Date()
     @State private var selectedDate: Date? = nil
     @State private var navigateToTreeView = false
@@ -47,9 +48,8 @@ struct CustomCalendarView2: View {
                         }
                     }
                     .padding(.horizontal)
-
                     // Calendar Grid
-                    LazyVGrid(columns: columns, spacing: 80) {
+                    LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(weekDays, id: \.self) { day in
                             Text(day)
                                 .font(.caption)
@@ -65,9 +65,10 @@ struct CustomCalendarView2: View {
                                 }) {
                                     Text("\(calendar.component(.day, from: date))")
                                         .frame(maxWidth: .infinity, minHeight: 40)
-                                        .background(Color.brown)
+                                        .background(hasEntry ? Color.green : Color.brown)
                                         .foregroundColor(.white)
                                         .cornerRadius(8)
+                                    //DayBox(hasEntry: false, day: String(weekDays))
                                 }
                             } else {
                                 Rectangle()
@@ -79,13 +80,58 @@ struct CustomCalendarView2: View {
                     .padding(.horizontal)
 
                     Spacer()
+                    // Calendar Grid
+//                    LazyVGrid(columns: columns, spacing: 80) {
+//                        ForEach(weekDays, id: \.self) { day in
+//                            Text(day)
+//                                .font(.caption)
+//                                .bold()
+//                                .frame(maxWidth: .infinity)
+//                        }
+//
+//                        ForEach(generateMonthDates(for: displayedDate), id: \.self) { date in
+////                            if let date = date {
+////                                // Shakira 6/3 - Check if there's already an entry for this date
+////                                        let hasEntry = appData.entries.contains {
+////                                            calendar.isDate($0.date, inSameDayAs: date)
+////                                        }
+//                                
+//                                Button(action: {
+//                                    selectedDate = date
+//                                    navigateToTreeView = true
+//                                }) {
+//                                    Text("\(calendar.component(.day, from: date))")
+//                                        .frame(maxWidth: .infinity, minHeight: 40)
+//                                    //shakira 6/3 - change color if has entry
+//                                        //.background(hasEntry ? Color.green : Color.brown)
+//                                        .background(Color.brown)
+//                                        .foregroundColor(.white)
+//                                        .cornerRadius(8)
+//                                }
+//                            } else {
+//                                Rectangle()
+//                                    .fill(Color.clear)
+//                                    .frame(height: 40)
+//                            }
+//                        }
+//                    }
+
                 }
             }
            
-            // New iOS 16+ style navigation
+    
             .navigationDestination(isPresented: $navigateToTreeView) {
                 TodaysTreeView()
             }
+            
+            //shakira 6/3 - updated this to pass selected date
+//            .navigationDestination(isPresented: $navigateToTreeView) {
+//                if let selectedDate = selectedDate {
+//                    TodaysTreeView(selectedDate: selectedDate)
+//                }
+//            }
+
+            
         }
     }
 
