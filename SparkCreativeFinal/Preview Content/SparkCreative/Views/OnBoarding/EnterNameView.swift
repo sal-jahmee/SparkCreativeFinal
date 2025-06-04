@@ -72,12 +72,7 @@ struct EnterNameView: View {
             hasCompletedOnboarding = true
         }, label: {
             Image("nextButton")
-//            Text("GET STARTED")
-//                .font(.headline)
-//                .foregroundColor(.white)
-//                .padding()
-//                .background(Color.blue)
-//                .cornerRadius(10)
+
         })
     }
     //validate name function

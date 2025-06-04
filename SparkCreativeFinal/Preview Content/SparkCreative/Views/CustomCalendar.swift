@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CustomCalendarView2: View {
     @EnvironmentObject var appData: AppDataModel
-    @State var hasEntry: Bool = false
     
     @State private var displayedDate = Date()
     @State private var selectedDate: Date? = nil
     @State private var navigateToTreeView = false
+    @State private var selectedEntry: CalendarEntry? = nil
 
     private let calendar = Calendar.current
     private let columns = Array(repeating: GridItem(.flexible()), count: 7)
@@ -24,6 +24,7 @@ struct CustomCalendarView2: View {
             ZStack {
                 Color.cream
                     .edgesIgnoringSafeArea(.all)
+                
                 VStack(spacing: 16) {
                     // Month navigation
                     HStack {
@@ -48,6 +49,7 @@ struct CustomCalendarView2: View {
                         }
                     }
                     .padding(.horizontal)
+                    
                     // Calendar Grid
                     LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(weekDays, id: \.self) { day in
@@ -58,14 +60,16 @@ struct CustomCalendarView2: View {
                         }
 
                         ForEach(generateMonthDates(for: displayedDate), id: \.self) { date in
+                            
+                            let dateExists = appData.getEntry(date)
                             if let date = date {
                                 Button(action: {
-                                    selectedDate = date
+                                    selectedEntry = dateExists.0
                                     navigateToTreeView = true
                                 }) {
                                     Text("\(calendar.component(.day, from: date))")
                                         .frame(maxWidth: .infinity, minHeight: 40)
-                                        .background(hasEntry ? Color.green : Color.brown)
+                                        .background(dateExists.1 ? Color.green : Color.brown)
                                         .foregroundColor(.white)
                                         .cornerRadius(8)
                                     //DayBox(hasEntry: false, day: String(weekDays))
@@ -121,8 +125,7 @@ struct CustomCalendarView2: View {
            
     
             .navigationDestination(isPresented: $navigateToTreeView) {
-                TodaysTreeView()
-            }
+                EntrySummaryView(entry: selectedEntry)            }
             
             //shakira 6/3 - updated this to pass selected date
 //            .navigationDestination(isPresented: $navigateToTreeView) {

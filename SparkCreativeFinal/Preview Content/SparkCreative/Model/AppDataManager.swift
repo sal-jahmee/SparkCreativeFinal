@@ -13,11 +13,27 @@ class AppDataModel: ObservableObject {
     @Published var currentCalendarEntry = CalendarEntry(date: Date.now, mood: nil, selectedEmotions: [""], selectedCircumstances: [""], exercises: [""])
     
     // this stores the calendar entries created by the user
-    @Published var entries: [CalendarEntry] = []
+    @Published var entries: [CalendarEntry] = [CalendarEntry(date: Date.now.addingTimeInterval(-86400), mood: .delighted, selectedEmotions: ["tolerant", "excited"], selectedCircumstances: ["school", "pets"], exercises: ["breathing"])]
 
     // adds data after user plants tree to entries array
     func addEntries(CalendarEntry: CalendarEntry){
         entries.append(CalendarEntry)
+    }
+    
+    /// Searches entries and returns a calendar entry and a boolean
+    func getEntry(_ input: Date?) -> (CalendarEntry? , Bool){
+        /// Safely unwraps  if the optional date is nil, if it is do not compute further
+        guard let unwrappedInput = input else {
+            return (nil, false)
+        }
+        
+        /// Searches array to compare the input date to each item in the entries array and returns the item and true if found, else returns both empty values
+        for item in entries {
+            if Calendar.current.isDate(unwrappedInput, equalTo: item.date, toGranularity: .day){
+                return (item, true)
+            }
+        }
+        return (nil, false)
     }
 }
 
