@@ -84,7 +84,7 @@ struct TodaysTreeView: View {
                     //                        CalendarView()
                     //                    }
                 }
-                
+                .fixedSize(horizontal: false, vertical: true)
             }
             NavigationLink(destination: CheckInView(currentTab: .calendar, name: name), isActive: $goToCalendar) {
         

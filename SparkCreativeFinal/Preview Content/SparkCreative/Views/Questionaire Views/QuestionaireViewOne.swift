@@ -26,14 +26,18 @@ struct QuestionaireViewOne: View {
                 
                 Group {
                     Text("Lets dig deeper into how you are feeling")
-                        .font(.custom("SinhalaMN", size:30))
                         .padding()
+                        .font(.custom("SinhalaMN", size:30))
+                        .fixedSize(horizontal: false, vertical: true)
+                    
                 Text("Choose an emotionthat  best describes your stress level")
                         .font(.custom("SinhalaMN", size:20))
                         .padding()
+                        .fixedSize(horizontal: false, vertical: true)
                 //shakira - added only choose 3
                 Text("Select up to 3 emotions")
                         .font(.custom("SinhalaMN", size:18))
+                        .fixedSize(horizontal: false, vertical: true)
 
                 }
                 .foregroundStyle(.hunterGreen)

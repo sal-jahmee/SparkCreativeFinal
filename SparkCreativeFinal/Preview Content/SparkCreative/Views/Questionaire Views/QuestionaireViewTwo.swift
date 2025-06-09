@@ -32,15 +32,18 @@ struct QuestionaireViewTwo: View {
                     Text("What is impacting you right now?")
                         .font(.custom("SinhalaMN", size:30))
                         .padding()
+                        .fixedSize(horizontal: false, vertical: true)
 
                 Text("Choose a category below")
                         .font(.custom("SinhalaMN", size:25))
+                        .fixedSize(horizontal: false, vertical: true)
                    
 
                 //shakira - added only choose 3
                 Text("Select up to 3 circumstances")
                         .font(.custom("SinhalaMN", size:18))
                         .padding()
+                        .fixedSize(horizontal: false, vertical: true)
 
                 }
                 .foregroundStyle(.hunterGreen)
