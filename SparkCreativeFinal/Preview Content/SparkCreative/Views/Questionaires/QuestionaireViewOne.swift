@@ -28,9 +28,11 @@ struct QuestionaireViewOne: View {
                     Text("Lets dig deeper into how you are feeling")
                         .font(.custom("SinhalaMN", size:30))
                         .padding()
-                Text("Choose an emotionthat  best describes your stress level")
+                    
+                Text("Choose an emotion that best describes your stress level")
                         .font(.custom("SinhalaMN", size:20))
                         .padding()
+                    
                 //shakira - added only choose 3
                 Text("Select up to 3 emotions")
                         .font(.custom("SinhalaMN", size:18))
@@ -76,7 +78,7 @@ struct QuestionaireViewOne: View {
                     }
           
             }
-            
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
     
