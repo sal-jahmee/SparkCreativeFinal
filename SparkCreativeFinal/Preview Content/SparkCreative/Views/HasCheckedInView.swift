@@ -11,7 +11,7 @@ struct EntrySummaryView: View {
     @EnvironmentObject var appData: AppDataModel
     var entry: CalendarEntry?
     var date = Date() //6-9
-    
+    //var name: String
     var body: some View {
         ZStack {
             (Color.cream)
@@ -19,7 +19,7 @@ struct EntrySummaryView: View {
             
       
        VStack {
-           Text("Hey")
+           Text("Hey \(appData.name)")
                .font(.custom("SinhalaMN", size: 30))
           
            Text("Today's Tree")
