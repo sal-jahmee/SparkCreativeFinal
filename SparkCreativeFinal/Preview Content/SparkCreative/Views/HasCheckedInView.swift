@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct HasCheckedInView: View {
+struct EntrySummaryView: View {
     @EnvironmentObject var appData: AppDataModel
-
+    var entry: CalendarEntry?
+    var date = Date() //6-9
+    
     var body: some View {
         ZStack {
             (Color.cream)
@@ -23,52 +25,46 @@ struct HasCheckedInView: View {
            Text("Today's Tree")
                .font(.custom("SinhalaMN", size: 40))
            
-           Image("tree")
-               .padding()
-           Text("Neutral")
+           entry?.mood?.treeColor ?? MoodSlider.neutral.treeColor
+
+           Text("\(entry?.mood?.rawString ?? "unknown mood")")
                .font(.custom("SinhalaMN", size: 25))
-           
                .padding()
+    
+//EMOTIONS
            Text("Your Emotions")
                .font(.custom("SinhalaMN", size: 22))
                .padding()
-           HStack(spacing: 30) {
-               HStack {
-                   Image(systemName: "leaf.fill")
-                   Text ("Calm")
+           HStack(spacing: 1){
+           if let emotions = entry?.selectedEmotions {
+               ForEach(emotions, id: \.self) { emotion in
+              
+                       Image(systemName: "leaf.fill")
+                           .padding()
+                       Text(emotion)
+                           //.padding()
+                   }
                }
-               
-               HStack {
-                   Image(systemName: "leaf.fill")
-                   Text ("Focused")
-               }
-          
-               HStack {
-                   Image(systemName: "leaf.fill")
-                   Text("Mindful")
-               }
-               
            }
            .font(.custom("SinhalaMN", size: 17))
            
+//CIRCUMSTANCES
            Text("The Circumstances")
-               .font(.custom("SinhalaMN", size: 22))
-               .padding()
-           HStack (spacing: 30){
-               HStack {
-                   Image(systemName: "leaf.fill")
-                   Text ("Friends")
-               }
-               HStack {
-                   Image(systemName: "leaf.fill")
-                   Text ("Business")
-               }
-               HStack {
-                   Image(systemName: "leaf.fill")
-                   Text("Work")
+           HStack(spacing: 1){
+           if let circumstances = entry?.selectedCircumstances{
+               ForEach(circumstances, id: \.self) { circumstance in
+             
+                       Image(systemName: "leaf.fill")
+                           .padding()
+                       Text(circumstance)
+                           //.padding()
+                   }
                }
            }
-.font(.custom("SinhalaMN", size: 17))
+            .font(.custom("SinhalaMN", size: 17))
+
+           
+           
            Text("Exercise")
                .font(.custom("SinhalaMN", size: 22))
                .padding()
@@ -81,7 +77,7 @@ struct HasCheckedInView: View {
 }
 }
 #Preview {
-    HasCheckedInView()
-        .environmentObject(AppDataModel())
+    EntrySummaryView(entry: AppDataModel().entries.first!)
+       // .environmentObject(AppDataModel())
 
 }

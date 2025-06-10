@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct EntrySummaryView: View {
+struct EntrySummaryView1: View {
     var entry: CalendarEntry?
+    var date = Date() //6-9
     var body: some View {
         NavigationStack {
             ZStack{
@@ -41,5 +42,5 @@ struct EntrySummaryView: View {
 }
 
 #Preview {
-    EntrySummaryView(entry: AppDataModel().entries.first!)
+    EntrySummaryView1(entry: AppDataModel().entries.first!)
 }

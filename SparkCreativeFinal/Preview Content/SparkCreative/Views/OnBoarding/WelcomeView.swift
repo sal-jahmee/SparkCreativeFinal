@@ -42,7 +42,6 @@ struct WelcomeView: View {
                     
               //      .frame(width: 250, height: 250)
                     .multilineTextAlignment(.center)
-                   
                     .font(.custom("SinhalaMN", size:20))
                     .fontWeight(.bold)
                     .foregroundColor(.hunterGreen)

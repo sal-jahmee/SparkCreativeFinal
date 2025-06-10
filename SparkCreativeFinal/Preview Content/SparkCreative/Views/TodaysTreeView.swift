@@ -104,7 +104,7 @@ struct TodaysTreeView: View {
 
             appData.addEntries(CalendarEntry: appData.currentCalendarEntry)
             //Shakira 6/3 - // Save current date
-           // appData.currentCalendarEntry.date = Date()
+            appData.currentCalendarEntry.date = Date()
  
           
             goToCalendar = true
