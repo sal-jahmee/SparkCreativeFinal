@@ -6,9 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
 
 // this holds the mood from the slider as well as the selected items from QuestionaireViewOne and QuestionairViewTwo.
 class AppDataModel: ObservableObject {
+    @AppStorage("name") var name: String = ""
+    @AppStorage("hasCompeletedOnBoarding") var hasCompeletedOnBoarding: Bool = false
+   // @AppStorage("hasSubmittedToday") var hasSubmittedToday: Bool = false
+    
+    
     //6-8 ensure date resets at midnight
     @Published var currentDate = Calendar.current.startOfDay(for: Date())
     

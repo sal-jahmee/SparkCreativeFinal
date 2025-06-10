@@ -14,7 +14,8 @@ struct EnterNameView: View {
     @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
    // var mood: String
     @State private var goToHomeScreen = false
-    @State var name: String = ""
+    
+  
     
     var body: some View {
         NavigationStack {
@@ -36,7 +37,7 @@ struct EnterNameView: View {
                         .padding()
                     //Text("Enter your name")
                     //text field to enter name
-                    TextField("Enter your name", text: $name)
+                    TextField("Enter your name", text: $appData.name)
                         .padding()
                         .background(Color.green.opacity(0.2))
                         .frame(width: 300, height: 50)
@@ -46,7 +47,7 @@ struct EnterNameView: View {
                     Spacer()
                     NextButtonToHomeScreen()
                         .fullScreenCover(isPresented: $goToHomeScreen) {
-                            CheckInView(name: name)
+                            CheckInView(name: appData.name)
                         }
                     //                NavigationLink(destination: CheckInView(name: name), isActive: $goToHomeScreen) {
                     //                    NextButtonToHomeScreen()
