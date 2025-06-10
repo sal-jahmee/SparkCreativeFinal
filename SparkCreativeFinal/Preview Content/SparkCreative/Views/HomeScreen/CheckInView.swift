@@ -61,7 +61,7 @@ struct CheckInView: View {
 //            }
             .navigationBarBackButtonHidden()
 //settings button
-                .navigationBarItems(trailing: SettingsButton)
+                //.navigationBarItems(trailing: SettingsButton)
 
 //Button to next screen
              //   NextButton

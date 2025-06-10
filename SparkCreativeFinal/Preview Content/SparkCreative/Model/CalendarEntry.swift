@@ -18,6 +18,10 @@ struct CalendarEntry: Identifiable {
     var selectedCircumstances: [String] = []
     var exercises : [String]
     
+    /// Write a func that returns the name of the day from the date. (Mon, Tue, Wed)
+    ///
+    /// when you go intp entry summary view call this
+    
 }
 
 /*

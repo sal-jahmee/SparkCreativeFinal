@@ -90,7 +90,14 @@ struct QuestionaireViewOne: View {
             //                .foregroundStyle(.white)
             //                .background(Color.pink)
             //                .cornerRadius(10)
-            Image("nextButton")
+            Text("Next")
+                .font(.title)
+                .bold()
+                .foregroundColor(.beige)
+                .frame(width: 163, height: 66)
+                .background(Color.hunterGreen)
+                .cornerRadius(20)
+                .padding()
         })
     }
 }

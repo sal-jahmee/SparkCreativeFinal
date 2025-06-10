@@ -17,7 +17,7 @@ struct ListView: View {
     //model
     let exercises = [
         Exercise(title: "Breathing", description: "Helps you focus on breathing."),
-        Exercise(title: "Vent", description: "Relaxes your muscles."),
+       // Exercise(title: "Vent", description: "Relaxes your muscles."),
        // Exercise(title: "Affirmations", description: "Improves your posture."),
     ]
     

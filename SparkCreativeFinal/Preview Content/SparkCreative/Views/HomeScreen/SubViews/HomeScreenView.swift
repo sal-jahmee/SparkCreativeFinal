@@ -56,7 +56,15 @@ struct HomeScreenView: View {
             
           goToQuestionaire = true
         }, label: {
-            Image("nextButton")
+            Text("Next")
+                .font(.title)
+                .bold()
+                .foregroundColor(.beige)
+                .frame(width: 163, height: 66)
+                .background(Color.hunterGreen)
+                .cornerRadius(20)
+                .padding()
+            //Image("nextButton")
 //            ZStack {
 //                RoundedRectangle(cornerRadius: 25)
 //                    .fill(Color.blue)
@@ -90,7 +98,7 @@ struct HomeScreenView: View {
 
                     
                 
-                Text("What is your stress level today?")
+                Text("How are you feeling today?")
                     .font(.custom("SinhalaMN", size:20))
                     .fontWeight(.bold)
                     .foregroundColor(.hunterGreen)

@@ -8,17 +8,6 @@
 import Foundation
 import SwiftUI
 
-//this is for questionare
-//struct Mood: Identifiable{
-//    let name: String
-//    var isSelected: Bool = false
-//    var id: String = UUID().uuidString
-//}
-
-//class MoodModel : ObservableObject {
-//    
-//   
-//}
 
 enum MoodSlider {
     case delighted
@@ -34,7 +23,7 @@ enum MoodSlider {
         case .delighted:
             return "\"Delighted\""
         case .plesant:
-            return "\"Plesant\""
+            return "\"Pleasant\""
         case .neutral:
             return "\"Neutral\""
         case .displeased:
@@ -43,7 +32,7 @@ enum MoodSlider {
             return "\"Upset\""
         }
     }
-  
+  //This is for the summary page
     var rawString: String {
         switch self {
         case .delighted:
@@ -60,7 +49,7 @@ enum MoodSlider {
     }
   
     
-    // this part is to display the leaf on the home screen
+    // this part is to display the tree on the home screen
     //shakira- changed asset names
     var treeColor: Image {
         switch self {
@@ -75,16 +64,6 @@ enum MoodSlider {
         case .upset:
             return Image("redTree")
 
-//        case .happy:
-//            return Image("leafBlue")
-//        case .sad:
-//            return Image("leafGreen")
-//        case .neutral:
-//            return Image("leafYellow")
-//        case .angry:
-//            return Image("leafOrange")
-//        case .stressed:
-//            return Image("leafRed")
         }
    }
 }

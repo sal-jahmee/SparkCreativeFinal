@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TodaysTreeView: View {
-    //shakira
+    //shakira 6/3- accepts date
+  // var selectedDate: Date
     @StateObject var moodViewModel = MoodViewModel()
 
     @EnvironmentObject var appData: AppDataModel
@@ -21,21 +22,17 @@ struct TodaysTreeView: View {
     
     //shakira - added show button flag
     @State var showButtons = false
-    
-    
 //    var mood: String
 //    var emotions: [String]
 //    var circumstances: [String]
     
-    
     var body: some View {
-        
-        
         NavigationStack {
-            ZStack{
+            ZStack {
                 Color.beige
                     .ignoresSafeArea()
-                VStack{
+                
+                VStack {
                     Text("Todays Tree")
                         .font(.custom("Sinhala MN", size: 30))
                         .foregroundStyle(Color.hunterGreen)
@@ -104,8 +101,11 @@ struct TodaysTreeView: View {
     func plantTreeButton(appData: AppDataModel) -> some View{
         
         Button(action: {
-            //selectedTab = 1
+
             appData.addEntries(CalendarEntry: appData.currentCalendarEntry)
+            //Shakira 6/3 - // Save current date
+            appData.currentCalendarEntry.date = Date()
+ 
           
             goToCalendar = true
         }, label: {
@@ -115,6 +115,7 @@ struct TodaysTreeView: View {
                 .frame(width: 163, height: 66)
                 .background(Color.hunterGreen)
                 .cornerRadius(20)
+        
         })
        
         
@@ -132,7 +133,9 @@ struct TodaysTreeView: View {
                 .frame(width: 163, height: 66)
                 .background(Color.hunterGreen)
                 .cornerRadius(20)
+                .padding()
         })
+        
     }
     
 }
@@ -157,6 +160,7 @@ extension MoodSlider {
 }
 
 #Preview {
+//    TodaysTreeView(selectedDate: Date())
     TodaysTreeView()
         .environmentObject(AppDataModel())
 }
