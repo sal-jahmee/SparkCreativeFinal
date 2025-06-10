@@ -32,59 +32,35 @@ struct TodaysTreeView: View {
                 Color.beige
                     .ignoresSafeArea()
                 
-                VStack {
-                    Text("Todays Tree")
-                        .font(.custom("Sinhala MN", size: 30))
-                        .foregroundStyle(Color.hunterGreen)
-                        .bold()
-                    //image of the correlated tree
-                    
-                    // Image(appData.treeColor)
-                    //shakira
-//                    moodViewModel.treeColor
-//                                   .resizable()
-//                                   .frame(width: 200, height: 200)
-//                    MoodSlider.from(mood: appData.currentCalendarEntry.mood).treeColor
-//                        .resizable()
-//                        .frame(width: 200, height: 200)
-//
-                    
-                    //shakira - added tree
-//                    MoodSlider.from(mood: appData.currentCalendarEntry.mood).treeColor
-//                        .resizable()
-//                        .frame(width: 200, height: 200)
-                    appData.currentCalendarEntry.mood?.treeColor ?? MoodSlider.neutral.treeColor
-                        .resizable()
-                       // .frame(width: 100, height: 100)
-                        //                        .frame(width: 200, height: 200)
-//
-                    Text("mood: \(appData.currentCalendarEntry.mood?.rawString ?? "unknown mood")")//data
-                        .font(.custom("Sinhala MN", size: 25))
-                        .foregroundStyle(Color.hunterGreen)
-                        .bold()
-                    Text("Your emotions: \(appData.currentCalendarEntry.selectedEmotions.joined(separator: ", "))")
-                        .font(.custom("Sinhala MN", size: 25))
-                        .foregroundStyle(Color.hunterGreen)
-                        .bold()
-                    //selected from previous screen
-                    Text("Your circumstances:  \(appData.currentCalendarEntry.selectedCircumstances.joined(separator: ", "))")
-                        .font(.custom("Sinhala MN", size: 25))
-                        .foregroundStyle(Color.hunterGreen)
-                        .bold()
-                    //selected from previous screen
-
-                    //bubbles of data
-                    
-                    // This modifier replaces NavigationLink(isActive:)
-                    
-                    
-                    plantTreeButton(appData: appData)
-                    goToExerciseButton()
-                    
-                    //                    .fullScreenCover(isPresented: $goToCalendar){
-                    //                        CalendarView()
-                    //                    }
-                }
+                    VStack {
+                        Text("Todays Tree")
+                        appData.currentCalendarEntry.mood?.treeColor ?? MoodSlider.neutral.treeColor
+                
+                        Text("Mood:")
+                        Text("\(appData.currentCalendarEntry.mood?.rawString ?? "unknown mood")") //data
+                            .padding(.bottom, 20)
+                        
+                        Text("Your Emotions:")
+                        Text(appData.currentCalendarEntry.selectedEmotions
+                            .filter { !$0.isEmpty }
+                            .joined(separator: ", "))
+                            .padding(.bottom, 20)
+                        
+                        //selected from previous screen
+                        Text("Your Circumstances:")
+                        Text(appData.currentCalendarEntry.selectedCircumstances
+                            .filter { !$0.isEmpty }
+                            .joined(separator: ", "))
+                            .padding(.bottom, 20)
+                        
+                        plantTreeButton(appData: appData)
+                        goToExerciseButton()
+                    }
+                    .foregroundStyle(Color.hunterGreen)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .bold()
+                    .font(.custom("Sinhala MN", size: 25))
                 
             }
             NavigationLink(destination: CheckInView(currentTab: .calendar, name: name), isActive: $goToCalendar) {
@@ -115,10 +91,7 @@ struct TodaysTreeView: View {
                 .frame(width: 163, height: 66)
                 .background(Color.hunterGreen)
                 .cornerRadius(20)
-        
         })
-       
-        
     }
     
     //shakira - added button for exercise 5/31
@@ -127,7 +100,7 @@ struct TodaysTreeView: View {
         Button(action: {
             goToExercise = true
         }, label: {
-            Text("Try Breathing exercise")
+            Text("Try Breathing Exercise")
                 .font(.headline)
                 .foregroundColor(.beige)
                 .frame(width: 163, height: 66)
@@ -135,9 +108,7 @@ struct TodaysTreeView: View {
                 .cornerRadius(20)
                 .padding()
         })
-        
     }
-    
 }
 //shakira - added extension for tree
 extension MoodSlider {
