@@ -1,5 +1,5 @@
 //
-//  CalendarView.swift
+//  SliderView.swift
 //  SparkCreative
 //
 //  Created by Shakira Al-Jahmee on 5/12/25.
