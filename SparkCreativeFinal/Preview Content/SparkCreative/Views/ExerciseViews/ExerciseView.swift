@@ -30,6 +30,7 @@ struct ExerciseView: View {
                     Text("Breath in for 2 seconds and breath out for 2 seconds. Repeat until the timer stops.")
                        .fontWeight(.bold)
                         .foregroundStyle(.hunterGreen)
+                        .padding()
                     
                     Image(systemName: "heart.fill")
                         .resizable()

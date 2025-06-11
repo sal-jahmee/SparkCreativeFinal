@@ -32,11 +32,12 @@ struct WelcomeView: View {
                     
                     Image("homeScreenTrees")
                         .frame(width: 80, height: 80)
-                        .padding(.bottom, 150)
-                        .padding(.top, 120)
+//                        .padding(.bottom, 150)
+//                        .padding(.top, 120)
+                        .padding()
                     
                     Text("""
-                        Take a deep breath- Youre in the right place. Like the rhythm in the treesm we're here to help you track your stress and find balance, naturally. Let's reduce your stress together.
+                        Take a deep breath, You're in the right place. Like the rhythm in the trees, we're here to help you track your stress and find balance. Let's reduce your stress together.
                         """)
                     .padding()
                     
