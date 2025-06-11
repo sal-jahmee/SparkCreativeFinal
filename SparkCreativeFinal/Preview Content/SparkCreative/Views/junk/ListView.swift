@@ -26,6 +26,7 @@ struct ListView: View {
             List {
                 ForEach(exercises) { exercise in
                     ZStack {
+                        
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.feldgrau)
                             .frame(maxWidth: .infinity, minHeight: 100)
