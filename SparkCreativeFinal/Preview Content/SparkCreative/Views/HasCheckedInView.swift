@@ -35,13 +35,14 @@ struct EntrySummaryView: View {
            Text("Your Emotions")
                .font(.custom("SinhalaMN", size: 22))
                .padding()
-           HStack(spacing: 1){
+           HStack(spacing: 10) {
            if let emotions = entry?.selectedEmotions {
                ForEach(emotions, id: \.self) { emotion in
               
-                       Image(systemName: "leaf.fill")
-                           .padding()
+//                       Image(systemName: "leaf.fill")
+//                           .padding()
                        Text(emotion)
+                   Image(systemName: "leaf.fill")
                            //.padding()
                    }
                }
@@ -50,13 +51,16 @@ struct EntrySummaryView: View {
            
 //CIRCUMSTANCES
            Text("The Circumstances")
-           HStack(spacing: 1){
+               .font(.custom("SinhalaMN", size: 22))
+               .padding()
+           HStack(spacing: 10){
            if let circumstances = entry?.selectedCircumstances{
                ForEach(circumstances, id: \.self) { circumstance in
              
-                       Image(systemName: "leaf.fill")
-                           .padding()
+//                       Image(systemName: "leaf.fill")
+//                           .padding()
                        Text(circumstance)
+                   Image(systemName: "leaf.fill")
                            //.padding()
                    }
                }
@@ -77,7 +81,12 @@ struct EntrySummaryView: View {
 }
 }
 #Preview {
+
     EntrySummaryView(entry: CalendarEntry(date: Date.now, selectedEmotions: ["neutral"], selectedCircumstances: ["I hate"], exercises: ["Big pluto"]))
         .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
+
+    EntrySummaryView(entry: AppDataModel().entries.first!)
+        .environmentObject(AppDataModel())
+
 
 }

@@ -76,7 +76,6 @@ struct QuestionaireViewOne: View {
                     .navigationDestination(isPresented: $goToQuestionaireTwo) {
                         QuestionaireViewTwo()
                     }
-          
             }
             .fixedSize(horizontal: false, vertical: true)
         }
@@ -86,12 +85,7 @@ struct QuestionaireViewOne: View {
         Button(action: {
             goToQuestionaireTwo = true
         }, label: {
-            //            Text("NEXT")
-            //                .frame(width: 100, height: 40)
-            //                .font(.headline)
-            //                .foregroundStyle(.white)
-            //                .background(Color.pink)
-            //                .cornerRadius(10)
+
             Text("Next")
                 .font(.title)
                 .bold()

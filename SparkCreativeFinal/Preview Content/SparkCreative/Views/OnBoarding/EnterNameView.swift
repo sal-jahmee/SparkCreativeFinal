@@ -42,7 +42,7 @@ struct EnterNameView: View {
                         .background(Color.green.opacity(0.2))
                         .frame(width: 300, height: 50)
                     
-                    Text("dont worry, no one will know ;)")
+                    Text("Don't worry, no one will know ;)")
                         .foregroundColor(.hunterGreen)
                     Spacer()
                     NextButtonToHomeScreen()
