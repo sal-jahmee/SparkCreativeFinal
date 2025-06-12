@@ -125,7 +125,8 @@ struct CustomCalendarView2: View {
            
     
             .navigationDestination(isPresented: $navigateToTreeView) {
-                EntrySummaryView(entry: selectedEntry)            }
+                EntrySummaryView(entry: selectedEntry)
+            }
             
             //shakira 6/3 - updated this to pass selected date
 //            .navigationDestination(isPresented: $navigateToTreeView) {
@@ -169,7 +170,7 @@ struct CustomCalendarView2: View {
 
 #Preview {
     CustomCalendarView2()
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.fullMonthUse.mainContext))
 
 }
 

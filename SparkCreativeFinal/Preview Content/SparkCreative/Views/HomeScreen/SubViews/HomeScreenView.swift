@@ -31,7 +31,7 @@ struct HomeScreenView: View {
                         set: {viewModel.progress = Double($0)}
                     ))//revise this 
                     //mood
-                    Text(viewModel.getMood().title)
+                    Text(viewModel.getMood())
                         .font(.custom("SinhalaMN", size:30))
                         .fontWeight(.bold)
                         .foregroundColor(.hunterGreen)
@@ -50,7 +50,7 @@ struct HomeScreenView: View {
     
     func NextButton() -> some View {
         Button(action: {
-            appData.currentCalendarEntry.mood = viewModel.getMood()
+            appData.currentCalendarEntry.moodString = viewModel.getMood()
             
             //NTS: Shak revisit
             
@@ -115,6 +115,6 @@ struct HomeScreenView: View {
 
 #Preview {
     HomeScreenView(name: "shak")
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
 }

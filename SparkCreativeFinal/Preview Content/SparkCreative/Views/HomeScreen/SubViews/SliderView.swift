@@ -172,6 +172,6 @@ struct SliderView: View {
 }
 #Preview {
     SliderView(progress: .constant(0.5))
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
 }

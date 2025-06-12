@@ -25,9 +25,9 @@ struct EntrySummaryView: View {
            Text("Today's Tree")
                .font(.custom("SinhalaMN", size: 40))
            
-           entry?.mood?.treeColor ?? MoodSlider.neutral.treeColor
+           entry?.mood.treeColor ?? MoodSlider(mood: "neutral").treeColor
 
-           Text("\(entry?.mood?.rawString ?? "unknown mood")")
+           Text("\(entry?.moodString ?? "unknown mood")")
                .font(.custom("SinhalaMN", size: 25))
                .padding()
     
@@ -77,7 +77,7 @@ struct EntrySummaryView: View {
 }
 }
 #Preview {
-    EntrySummaryView(entry: AppDataModel().entries.first!)
-       // .environmentObject(AppDataModel())
+    EntrySummaryView(entry: CalendarEntry(date: Date.now, selectedEmotions: ["neutral"], selectedCircumstances: ["I hate"], exercises: ["Big pluto"]))
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
 }

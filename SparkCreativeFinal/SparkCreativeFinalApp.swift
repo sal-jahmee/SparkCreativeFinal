@@ -9,13 +9,24 @@
 
 
 import SwiftUI
+import SwiftData
 
 @main
 struct SparkCreativeApp: App {
-    @StateObject var appData = AppDataModel()
+    var appData: AppDataModel
     //@StateObject var moodData = MoodModel()
     // Shakira - added onboarding status using AppStorage
     //var name = String("")
+    let container: ModelContainer
+    init() {
+        do {
+            container = try ModelContainer(for: CalendarEntry.self)
+        } catch {
+            fatalError("Failed to create a model container in the app initializer: \(error)")
+        }
+        
+        appData = AppDataModel(context: container.mainContext)
+    }
     @AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
     
     
@@ -41,4 +52,6 @@ struct SparkCreativeApp: App {
            .environmentObject(appData)
         }
     }
+    
+    
 }

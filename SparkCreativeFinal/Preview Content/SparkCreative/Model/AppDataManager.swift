@@ -7,7 +7,11 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
+
+
+@MainActor
 // this holds the mood from the slider as well as the selected items from QuestionaireViewOne and QuestionairViewTwo.
 class AppDataModel: ObservableObject {
     @AppStorage("name") var name: String = ""
@@ -21,16 +25,26 @@ class AppDataModel: ObservableObject {
     @Published var currentCalendarEntry = CalendarEntry(date: Date.now, mood: nil, selectedEmotions: [""], selectedCircumstances: [""], exercises: [""])
     
     // this stores the calendar entries created by the user
-    @Published var entries: [CalendarEntry] = [CalendarEntry(date: Date.now.addingTimeInterval(-86400), mood: .delighted, selectedEmotions: ["tolerant", "excited"], selectedCircumstances: ["school", "pets"], exercises: ["breathing"])]
-    
+    @Published var entries: [CalendarEntry] /*= [CalendarEntry(date: Date.now.addingTimeInterval(-86400), mood: .delighted, selectedEmotions: ["tolerant", "excited"], selectedCircumstances: ["school", "pets"], exercises: ["breathing"])]*/
+    var modelContext: ModelContext
     
     //6-8 ensure date resets at midnight
-    init() {
+    init(context: ModelContext) {
+        self.modelContext = context
+        do {
+            try self.entries = modelContext.fetch(DataController.sortedEntryDescriptor)
+        } catch {
+            fatalError("Failed to fetch data for the entries given the data controllers entry sort descriptor")
+        }
         Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
             self.currentDate = Calendar.current.startOfDay(for: Date())
         }
     }
     
+    func saveCurrentEntry() {
+        modelContext.insert(currentCalendarEntry)
+//        modelContext.save()
+    }
     // adds data after user plants tree to entries array
     func addEntries(CalendarEntry: CalendarEntry){
         //6-8 remove any existing entry for today

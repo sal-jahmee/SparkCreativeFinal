@@ -34,10 +34,9 @@ struct TodaysTreeView: View {
                 
                     VStack {
                         Text("Todays Tree")
-                        appData.currentCalendarEntry.mood?.treeColor ?? MoodSlider.neutral.treeColor
-                
+                        appData.currentCalendarEntry.mood.treeColor
                         Text("Mood:")
-                        Text("\(appData.currentCalendarEntry.mood?.rawString ?? "unknown mood")") //data
+                        Text("\(appData.currentCalendarEntry.moodString ?? "unknown mood")") //data
                             .padding(.bottom, 20)
                         
                         Text("Your Emotions:")
@@ -81,6 +80,7 @@ struct TodaysTreeView: View {
             appData.addEntries(CalendarEntry: appData.currentCalendarEntry)
             //Shakira 6/3 - // Save current date
             appData.currentCalendarEntry.date = Date()
+            appData.saveCurrentEntry()
  
           
             goToCalendar = true
@@ -111,27 +111,27 @@ struct TodaysTreeView: View {
     }
 }
 //shakira - added extension for tree
-extension MoodSlider {
-    static func from(mood: String) -> MoodSlider {
-        switch mood.lowercased() {
-        case "delighted":
-            return .delighted
-        case "plesant":
-            return .plesant
-        case "neutral":
-            return .neutral
-        case "displeased":
-            return .displeased
-        case "upset":
-            return .upset
-        default:
-            return .neutral
-        }
-    }
-}
+//extension MoodSlider {
+//    static func from(mood: String) -> MoodSlider {
+//        switch mood.lowercased() {
+//        case "delighted":
+//            return .delighted
+//        case "pleasant":
+//            return .pleasant
+//        case "neutral":
+//            return .neutral
+//        case "displeased":
+//            return .displeased
+//        case "upset":
+//            return .upset
+//        default:
+//            return .neutral
+//        }
+//    }
+//}
 
 #Preview {
 //    TodaysTreeView(selectedDate: Date())
     TodaysTreeView()
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 }

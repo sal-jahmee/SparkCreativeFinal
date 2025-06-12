@@ -20,8 +20,8 @@ struct EntrySummaryView1: View {
                         .font(.custom("Sinhala MN", size: 30))
                         .foregroundStyle(Color.hunterGreen)
                         .bold()
-                    entry?.mood?.treeColor ?? MoodSlider.neutral.treeColor
-                    Text("mood: \(entry?.mood?.rawString ?? "unknown mood")")//data
+                    entry?.mood.treeColor ?? MoodSlider(mood: "neutral").treeColor
+                    Text("mood: \(entry?.moodString ?? "unknown mood")")//data
                         .font(.custom("Sinhala MN", size: 25))
                         .foregroundStyle(Color.hunterGreen)
                         .bold()
@@ -42,5 +42,5 @@ struct EntrySummaryView1: View {
 }
 
 #Preview {
-    EntrySummaryView1(entry: AppDataModel().entries.first!)
+    EntrySummaryView1(entry: AppDataModel(context: DataController.freshInstall.mainContext).entries.first!)
 }

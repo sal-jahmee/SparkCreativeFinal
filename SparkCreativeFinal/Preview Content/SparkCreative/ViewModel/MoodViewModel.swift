@@ -14,18 +14,18 @@ class MoodViewModel: ObservableObject {
     @EnvironmentObject var appData: AppDataModel
     @Published var progress: Double = 0
     
-    func getMood() -> MoodSlider {
+    func getMood() -> String {
         switch progress {
         case 0..<0.2:
-            return .delighted
+            return "delighted"
         case 0.2..<0.4:
-            return .plesant
+            return "pleasant"
         case 0.4..<0.6:
-            return .neutral
+            return "neutral"
         case 0.6..<0.8:
-            return .displeased
+            return "displeased"
         default:
-            return .upset
+            return "upset"
         }
     }
     //shakira

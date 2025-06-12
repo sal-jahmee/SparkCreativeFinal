@@ -84,6 +84,5 @@ struct WelcomeView: View {
 
 #Preview {
     WelcomeView()
-        .environmentObject(AppDataModel())
-
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 }
