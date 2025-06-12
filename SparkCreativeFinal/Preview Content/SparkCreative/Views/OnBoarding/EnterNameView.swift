@@ -95,6 +95,6 @@ struct EnterNameView: View {
 
 #Preview {
     EnterNameView()
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
 }

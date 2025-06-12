@@ -85,7 +85,7 @@ struct CheckInView: View {
 
 #Preview {
     CheckInView(name: "shakira")
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
 }
 

@@ -100,5 +100,5 @@ struct QuestionaireViewOne: View {
 
 #Preview {
     QuestionaireViewOne()
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 }

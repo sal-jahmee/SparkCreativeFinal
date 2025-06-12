@@ -7,16 +7,29 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
-
-struct CalendarEntry: Identifiable {
-    
-    var id: String = UUID().uuidString
+@Model
+class CalendarEntry: Identifiable {
+    @Attribute(.unique)
+    var id: String
     var date: Date = Date()
-    var mood: MoodSlider?
+    var moodString: String?
+    var mood: MoodSlider {
+        return MoodSlider(mood: moodString ?? "neutral")
+    }
     var selectedEmotions: [String] = []
     var selectedCircumstances: [String] = []
     var exercises : [String]
+    
+    init(date: Date, mood: String? = nil, selectedEmotions: [String], selectedCircumstances: [String], exercises: [String]) {
+        self.id = UUID().uuidString
+        self.date = date
+        self.moodString = mood
+        self.selectedEmotions = selectedEmotions
+        self.selectedCircumstances = selectedCircumstances
+        self.exercises = exercises
+    }
     
     /// Write a func that returns the name of the day from the date. (Mon, Tue, Wed)
     ///

@@ -9,20 +9,39 @@ import Foundation
 import SwiftUI
 
 
-enum MoodSlider {
-    case delighted
-    case plesant
-    case neutral
-    case displeased
-    case upset
- 
+struct MoodSlider {
+    enum Mood {
+        case delighted
+        case pleasant
+        case neutral
+        case displeased
+        case upset
+    }
+    
+    var mood: Mood
+    init(mood: String) {
+        switch mood {
+        case "delighted":
+            self.mood = .delighted
+        case "pleasant":
+            self.mood = .pleasant
+        case "neutral":
+            self.mood = .neutral
+        case "displeased":
+            self.mood = .displeased
+        case "upset":
+            self.mood = .upset
+        default:
+            self.mood = .neutral
+        }
+    }
     // this part is for the title to display on the homescreen
     
     var title: String {
-        switch self {
+        switch mood {
         case .delighted:
             return "\"Delighted\""
-        case .plesant:
+        case .pleasant:
             return "\"Pleasant\""
         case .neutral:
             return "\"Neutral\""
@@ -34,11 +53,11 @@ enum MoodSlider {
     }
   //This is for the summary page
     var rawString: String {
-        switch self {
+        switch mood {
         case .delighted:
             return "Delighted"
-        case .plesant:
-            return "Plesant"
+        case .pleasant:
+            return "Pleasant"
         case .neutral:
             return "Neutral"
         case .displeased:
@@ -52,10 +71,10 @@ enum MoodSlider {
     // this part is to display the tree on the home screen
     //shakira- changed asset names
     var treeColor: Image {
-        switch self {
+        switch mood {
         case .delighted:
             return Image("orangeTree")
-        case .plesant:
+        case .pleasant:
             return Image("yellowTree")
         case .neutral:
             return Image("greenTree")

@@ -34,6 +34,6 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
-        .environmentObject(AppDataModel())
+        .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
 }
