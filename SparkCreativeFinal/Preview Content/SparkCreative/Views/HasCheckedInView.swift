@@ -85,8 +85,8 @@ struct EntrySummaryView: View {
     EntrySummaryView(entry: CalendarEntry(date: Date.now, selectedEmotions: ["neutral"], selectedCircumstances: ["I hate"], exercises: ["Big pluto"]))
         .environmentObject(AppDataModel(context: DataController.freshInstall.mainContext))
 
-    EntrySummaryView(entry: AppDataModel().entries.first!)
-        .environmentObject(AppDataModel())
+//    EntrySummaryView(entry: AppDataModel().entries.first!)
+//        .environmentObject(AppDataModel())
 
 
 }

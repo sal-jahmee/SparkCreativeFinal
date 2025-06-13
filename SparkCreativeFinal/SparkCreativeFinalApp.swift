@@ -33,7 +33,7 @@ struct SparkCreativeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group { //revise what group is
+            Group { 
                 let _ = appData.currentDate // forces view update on date change
                 
                 // use anyview as a workaround to allow conditional views of different types. 6-9
@@ -41,10 +41,10 @@ struct SparkCreativeApp: App {
                     AnyView(CheckInView(name: appData.name))
                 } else {
                     //6-8 switch homescreen to tree view if user checked in today
-                    if appData.hasSubmittedToday() {
-                        AnyView(EntrySummaryView(date: appData.currentDate))//6-9
+//                    if appData.hasSubmittedToday() {
+//                        AnyView(EntrySummaryView(date: appData.currentDate))//6-9
                         
-                    } else {
+//                    } else {
                         AnyView(WelcomeView())
                     }
                 }
@@ -54,4 +54,4 @@ struct SparkCreativeApp: App {
     }
     
     
-}
+

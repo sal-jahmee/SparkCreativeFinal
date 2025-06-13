@@ -25,11 +25,11 @@ struct QuestionaireViewOne: View {
             VStack{
                 
                 Group {
-                    Text("Lets dig deeper into how you are feeling")
+                    Text("Let's dig deeper into how you are feeling")
                         .font(.custom("SinhalaMN", size:30))
                         .padding()
                     
-                Text("Choose an emotion that best describes your stress level")
+                Text("Choose an emotion that best describes your stress level.")
                         .font(.custom("SinhalaMN", size:20))
                         .padding()
                     

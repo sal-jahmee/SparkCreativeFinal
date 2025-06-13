@@ -30,6 +30,7 @@ struct WelcomeView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.hunterGreen)
                     
+                    
                     Image("homeScreenTrees")
                         .frame(width: 80, height: 80)
 //                        .padding(.bottom, 150)

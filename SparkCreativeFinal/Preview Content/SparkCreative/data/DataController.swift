@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 @MainActor
 final class DataController {
+    
     static var defaultContainer: ModelContainer = {
         var container = try! ModelContainer()
         do {
@@ -18,6 +19,7 @@ final class DataController {
         }
         return container
     }()
+    
     static var freshInstall: ModelContainer = {
         var container = try! ModelContainer()
         do {

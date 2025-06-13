@@ -22,7 +22,6 @@ struct CheckInView: View {
     @State private var selectedTab = 0
     @State var currentTab: navBarType = .home
     
-    
     var name: String
     
     var body: some View {
@@ -34,12 +33,22 @@ struct CheckInView: View {
             ZStack {
                 TabView(selection: $currentTab) {
                     
-                    HomeScreenView(name: name)
-                        .tabItem {
-                            Image(systemName: "house")
-                            Text("Home")
-                        }
-                        .tag(navBarType.home)
+                    if appData.hasSubmittedToday() {
+                        EntrySummaryView(entry: appData.currentCalendarEntry)
+                            .tabItem {
+                                Image(systemName: "house")
+                                Text("Home")
+                            }
+                            .tag(navBarType.home)
+                    } else {
+                        HomeScreenView(name: name)
+                            .tabItem {
+                                Image(systemName: "house")
+                                Text("Home")
+                            }
+                            .tag(navBarType.home)
+                    }
+            
                     
                     CustomCalendarView2()
                         .tabItem {

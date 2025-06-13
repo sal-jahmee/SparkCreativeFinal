@@ -28,6 +28,7 @@ struct ExerciseView: View {
                         .foregroundStyle(.hunterGreen)
                     
                     Text("Breath in for 2 seconds and breath out for 2 seconds. Repeat until the timer stops.")
+                        .multilineTextAlignment(.center)
                        .fontWeight(.bold)
                         .foregroundStyle(.hunterGreen)
                         .padding()
