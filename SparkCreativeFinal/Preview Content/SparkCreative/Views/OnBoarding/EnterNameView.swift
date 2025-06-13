@@ -41,6 +41,7 @@ struct EnterNameView: View {
                         .padding()
                         .background(Color.green.opacity(0.2))
                         .frame(width: 300, height: 50)
+                        .foregroundStyle(.black)
                     
                     Text("Don't worry, no one will know ;)")
                         .foregroundColor(.hunterGreen)
