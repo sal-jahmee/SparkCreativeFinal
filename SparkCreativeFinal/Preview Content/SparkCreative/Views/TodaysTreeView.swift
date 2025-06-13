@@ -33,7 +33,7 @@ struct TodaysTreeView: View {
                     .ignoresSafeArea()
                 
                     VStack {
-                        Text("Todays Tree")
+                        Text("Today's Tree")
                         appData.currentCalendarEntry.mood.treeColor
                         Text("Mood:")
                         Text("\(appData.currentCalendarEntry.moodString ?? "unknown mood")") //data
@@ -53,6 +53,9 @@ struct TodaysTreeView: View {
                             .padding(.bottom, 20)
                         
                         plantTreeButton(appData: appData)
+                            .onChange(of: appData.entries) { oldValue, newValue in
+                                appData.todaysEntry = appData.currentCalendarEntry
+                            }
                         goToExerciseButton()
                     }
                     .foregroundStyle(Color.hunterGreen)

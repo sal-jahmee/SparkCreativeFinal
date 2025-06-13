@@ -10,7 +10,6 @@ import SwiftUI
 import SwiftData
 
 
-
 @MainActor
 // this holds the mood from the slider as well as the selected items from QuestionaireViewOne and QuestionairViewTwo.
 class AppDataModel: ObservableObject {
@@ -28,11 +27,17 @@ class AppDataModel: ObservableObject {
     @Published var entries: [CalendarEntry] /*= [CalendarEntry(date: Date.now.addingTimeInterval(-86400), mood: .delighted, selectedEmotions: ["tolerant", "excited"], selectedCircumstances: ["school", "pets"], exercises: ["breathing"])]*/
     var modelContext: ModelContext
     
+
+   //  let todaysEntry = [entries]
+    
+    var todaysEntry: CalendarEntry?
+
     //6-8 ensure date resets at midnight
     init(context: ModelContext) {
         self.modelContext = context
         do {
             try self.entries = modelContext.fetch(DataController.sortedEntryDescriptor)
+            self.todaysEntry = entries.filter {$0.date.get(.day, .month) == Date.now.get(.day, .month)}.first
         } catch {
             fatalError("Failed to fetch data for the entries given the data controllers entry sort descriptor")
         }

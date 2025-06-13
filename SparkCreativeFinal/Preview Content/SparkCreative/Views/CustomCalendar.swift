@@ -84,41 +84,7 @@ struct CustomCalendarView2: View {
                     .padding(.horizontal)
 
                     Spacer()
-                    // Calendar Grid
-//                    LazyVGrid(columns: columns, spacing: 80) {
-//                        ForEach(weekDays, id: \.self) { day in
-//                            Text(day)
-//                                .font(.caption)
-//                                .bold()
-//                                .frame(maxWidth: .infinity)
-//                        }
-//
-//                        ForEach(generateMonthDates(for: displayedDate), id: \.self) { date in
-////                            if let date = date {
-////                                // Shakira 6/3 - Check if there's already an entry for this date
-////                                        let hasEntry = appData.entries.contains {
-////                                            calendar.isDate($0.date, inSameDayAs: date)
-////                                        }
-//                                
-//                                Button(action: {
-//                                    selectedDate = date
-//                                    navigateToTreeView = true
-//                                }) {
-//                                    Text("\(calendar.component(.day, from: date))")
-//                                        .frame(maxWidth: .infinity, minHeight: 40)
-//                                    //shakira 6/3 - change color if has entry
-//                                        //.background(hasEntry ? Color.green : Color.brown)
-//                                        .background(Color.brown)
-//                                        .foregroundColor(.white)
-//                                        .cornerRadius(8)
-//                                }
-//                            } else {
-//                                Rectangle()
-//                                    .fill(Color.clear)
-//                                    .frame(height: 40)
-//                            }
-//                        }
-//                    }
+
 
                 }
             }
